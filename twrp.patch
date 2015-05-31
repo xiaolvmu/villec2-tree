@@ -1,0 +1,65 @@
+diff --git a/etc/init.rc b/etc/init.rc
+old mode 100644
+new mode 100755
+index aeec483..6d61a01
+--- a/etc/init.rc
++++ b/etc/init.rc
+@@ -29,7 +29,6 @@ on init
+     write /sys/class/android_usb/android0/iProduct ${ro.product.model}
+     write /sys/class/android_usb/android0/iSerial ${ro.serialno}
+ 
+-
+ on boot
+ 
+     ifup lo
+@@ -50,7 +49,6 @@ service healthd /sbin/healthd -n
+ service recovery /sbin/recovery
+ 
+ service adbd /sbin/adbd recovery
+-    disabled
+     socket adbd stream 660 system system
+ 
+ # Always start adbd on userdebug and eng builds
+@@ -64,3 +62,13 @@ on property:service.adb.root=1
+     write /sys/class/android_usb/android0/enable 0
+     restart adbd
+     write /sys/class/android_usb/android0/enable 1
++
++on property:sys.storage.ums_enabled=1
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/functions adb,mass_storage
++    write /sys/class/android_usb/android0/enable 1
++
++on property:sys.storage.ums_enabled=0
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/functions adb
++    write /sys/class/android_usb/android0/enable 1
+diff --git a/gui/action.cpp b/gui/action.cpp
+index 32adb84..3f8bb25 100644
+--- a/gui/action.cpp
++++ b/gui/action.cpp
+@@ -446,9 +446,10 @@ int GUIAction::doAction(Action action, int isThreaded /* = 0 */)
+ 		if (arg == "usb")
+ 		{
+ 			DataManager::SetValue(TW_ACTION_BUSY, 1);
+-			if (!simulate)
++			if (!simulate) {
+ 				PartitionManager.usb_storage_enable();
+-			else
++				property_set("sys.storage.ums_enabled", "1");
++			} else
+ 				gui_print("Simulating actions...\n");
+ 		}
+ 		else if (!simulate)
+@@ -469,8 +470,10 @@ int GUIAction::doAction(Action action, int isThreaded /* = 0 */)
+ 	{
+ 		if (arg == "usb")
+ 		{
+-			if (!simulate)
++			if (!simulate) {
++				property_set("sys.storage.ums_enabled", "0");
+ 				PartitionManager.usb_storage_disable();
++			}
+ 			else
+ 				gui_print("Simulating actions...\n");
+ 			DataManager::SetValue(TW_ACTION_BUSY, 0);

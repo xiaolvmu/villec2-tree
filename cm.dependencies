@@ -1,0 +1,6 @@
+[
+  {
+    "repository": "android_kernel_htc_villec2",
+    "target_path": "kernel/htc/villec2"
+  }
+]

@@ -1,0 +1,222 @@
+#!/system/bin/sh
+#Script originally made by Axetilen. Modified by Sultan (android1234567)
+#Updated for albinoman887's ChronicKernel (98% of the credit goes to android1234567. Thanks so much man :)
+#Updated for ChronicKernel-linaro
+
+# Configure your options here #
+
+
+# Config default CPU Gonvernor (Disabled by default: When disabled uses internal Kernel setting)
+# For better battery life switch to badass
+# Kernel Default: ondemand
+# Possible values
+#  badass
+#  ondemand
+#  interactive
+#= lagfee
+#  performance
+GOV=ondemand
+
+
+# Config I/O scheduler
+# deadline
+# cfq
+# noop
+# vr 
+# sio (default)
+IO=sio
+
+
+# Config CPU max frequency
+# Default: 1566000 (1566Mhtz)
+# Overclockable to - 1836000 (1836Mhtz)
+# for badass set to 1566mhtz (best performance/battery life)
+MAXFREQ=1566000
+
+
+# Config CPU min frequency
+# Default: 384000 (384Mhtz)
+# Range 384000 - 1944000 (384Mhtz - 1944Mhtz)
+MINFREQ=384000
+
+
+# Config 3D GPU clock
+# 228571000 = 228mhz
+# 266667000 = 267mhz (default)
+# 300000000 = 300mhz (Recomended For balance of Performance and Battery life)
+# 320000000 = 320mhz
+GPU=266667000
+
+
+# Config 2D GPU clock
+# 145455000 = 145mhz
+# 160000000 = 160mhz
+# 200000000 = 200mhz (default)
+# 228571000 = 228mhz (Recomended For balance of Performance and Battery life)
+# 266667000 = 267mhz
+DD=200000000
+
+
+# Badass
+# possible values
+# 1 = performance
+# 2 = balanced
+# 3 = battery saving
+BADASS=2
+
+
+# Enable Sweep2Wake
+# 0 = disabled (default)
+# 1 = enabled
+# 2 = enabled (with no button backlight during sweep)
+SWEEP=0
+
+
+# Enable Fastcharge
+# 0 = disabled
+# 1 = substitute AC to USB charging always
+# 2 = substitute AC to USB charging only if there is no USB peripheral detected
+FASTCHARGE=1
+
+
+# Fsync Control
+# Disabled by default (recomended)
+# 2 = Fsync disabled
+# 1 = Fsync enabled
+FSYNC=2
+
+
+# TUN
+# Disabled by default
+# 0 = Disabled
+# 1 = Enabled
+TUN=0
+
+
+# End of configurable options #
+
+
+################# DON'T CHANGE ANYTHING BELOW THIS LINE #################
+
+
+## Config CPU governor
+    echo "$GOV" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    echo "$GOV" > /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
+
+
+# Config 3D GPU setting
+    chmod 644 /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/max_gpuclk
+    chmod 644 /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/gpuclk
+    echo $GPU > /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/max_gpuclk
+    echo $GPU > /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/gpuclk
+
+
+# Config 2D GPU setting
+    chmod 644 /sys/devices/platform/kgsl-2d0.0/kgsl/kgsl-2d0/max_gpuclk
+    chmod 644 /sys/devices/platform/kgsl-2d0.0/kgsl/kgsl-2d0/gpuclk
+    chmod 644 /sys/devices/platform/kgsl-2d1.1/kgsl/kgsl-2d1/max_gpuclk
+    chmod 644 /sys/devices/platform/kgsl-2d1.1/kgsl/kgsl-2d1/gpuclk
+    echo $DD > /sys/devices/platform/kgsl-2d0.0/kgsl/kgsl-2d0/max_gpuclk
+    echo $DD > /sys/devices/platform/kgsl-2d0.0/kgsl/kgsl-2d0/gpuclk
+    echo $DD > /sys/devices/platform/kgsl-2d1.1/kgsl/kgsl-2d1/max_gpuclk
+    echo $DD > /sys/devices/platform/kgsl-2d1.1/kgsl/kgsl-2d1/gpuclk
+ 
+
+# Config USB forced fastcharge
+    chmod 644 /sys/kernel/fast_charge/force_fast_charge
+    echo "$FASTCHARGE" > /sys/kernel/fast_charge/force_fast_charge
+
+
+# Config Sweep2Wake (with compatibility with NLJ's fix)
+	if [ "$SWEEP" = "0" ]
+	then
+                chown radio.system /sys/android_touch/sweep2wake
+                chmod 664 /sys/android_touch/sweep2wake
+   		echo 0 > /sys/android_touch/sweep2wake
+	fi
+
+	if [ "$SWEEP" = "1" ]
+	then
+    		chown radio.system /sys/android_touch/sweep2wake
+                chmod 664 /sys/android_touch/sweep2wake
+   		echo 1 > /sys/android_touch/sweep2wake
+	fi
+
+	if [ "$SWEEP" = "2" ]
+	then
+    		chown radio.system /sys/android_touch/sweep2wake
+                chmod 664 /sys/android_touch/sweep2wake
+   		echo 2 > /sys/android_touch/sweep2wake
+	fi
+
+
+# Config badass CPU Gonvernor
+CUR_GOV="`cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor`"
+echo badass > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+sleep 3
+case ${BADASS} in
+	1)
+		$L "badass: setting performance oriented configuration"
+		echo 1188000 > /sys/devices/system/cpu/cpufreq/badass/two_phase_freq;
+		echo 1512000 > /sys/devices/system/cpu/cpufreq/badass/three_phase_freq;
+		echo 120 > /sys/devices/system/cpu/cpufreq/badass/busy_threshold;
+		echo 80 > /sys/devices/system/cpu/cpufreq/badass/busy_clr_threshold;
+		echo 8 > /sys/devices/system/cpu/cpufreq/badass/semi_busy_threshold;
+		echo 4 > /sys/devices/system/cpu/cpufreq/badass/semi_busy_clr_threshold;
+	;;
+	2)
+		$L "badass: setting balanced configuration"
+		echo 918000 > /sys/devices/system/cpu/cpufreq/badass/two_phase_freq;
+		echo 1188000 > /sys/devices/system/cpu/cpufreq/badass/three_phase_freq;
+                echo 50000 > /sys/devices/system/cpu/cpufreq/badass/sampling_rate
+		echo 130 > /sys/devices/system/cpu/cpufreq/badass/busy_threshold;
+		echo 100 > /sys/devices/system/cpu/cpufreq/badass/busy_clr_threshold;
+		echo 14 > /sys/devices/system/cpu/cpufreq/badass/semi_busy_threshold;
+		echo 6 > /sys/devices/system/cpu/cpufreq/badass/semi_busy_clr_threshold;
+	;;
+	3)
+		$L "badass: setting battery saving configuration"
+		echo 918000 > /sys/devices/system/cpu/cpufreq/badass/two_phase_freq;
+		echo 1188000 > /sys/devices/system/cpu/cpufreq/badass/three_phase_freq;
+		echo 140 > /sys/devices/system/cpu/cpufreq/badass/busy_threshold;
+		echo 110 > /sys/devices/system/cpu/cpufreq/badass/busy_clr_threshold;
+		echo 80 > /sys/devices/system/cpu/cpufreq/badass/semi_busy_threshold;
+		echo 20 > /sys/devices/system/cpu/cpufreq/badass/semi_busy_clr_threshold;
+	;;
+esac
+echo ${CUR_GOV} > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+
+
+# Config CPU Frequency
+    chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    echo $MAXFREQ > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    echo $MINFREQ > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+ 
+    chmod 644 /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
+    echo $MAXFREQ > /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
+    chmod 644 /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
+    echo $MINFREQ > /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
+
+
+# Config i/o scheduler
+    chmod 644 /sys/block/mmcblk0/queue/scheduler
+    echo "$IO" > /sys/block/mmcblk0/queue/scheduler
+    chmod 644 /sys/block/mmcblk1/queue/scheduler
+    echo "$IO" > /sys/block/mmcblk1/queue/scheduler
+
+
+# Config Fsync
+if [ "$FSYNC" = "2" ]
+then
+    echo "0" > sys/class/misc/fsynccontrol/fsync_enabled
+fi
+
+
+# Config TUN
+if [ "${TUN}" = "1" ]; then
+	if [ -e /system/lib/modules/tun.ko ] ; then
+		insmod /system/lib/modules/tun.ko
+		$L "Inserted tun kernel module."
+	fi
+fi
