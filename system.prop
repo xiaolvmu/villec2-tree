@@ -1,0 +1,62 @@
+#
+# system.prop for villec2
+#
+
+ro.sf.lcd_density=240
+#
+# NETWORK/DATA/RADIO
+#
+mobiledata.interfaces=rmnet0
+rild.libpath=/system/lib/libhtc_ril.so
+ro.telephony.ril.v3=datacallapn,signalstrength
+#ril
+ro.ril.enable.sdr=1
+ro.ril.enable.amr.wideband=0
+ro.ril.enable.a52.HTC-ITA=1
+ro.ril.enable.a53.HTC-ITA=1
+ro.ril.enable.a52=0
+ro.ril.enable.a53=1
+ro.ril.disable.fd.plmn.prefix=23402,23410,23411,23420
+ro.gsm.2nd_data_retry_config=max_retries=3, 2000, 2000, 2000
+ro.ril.enable.dtm=0
+ro.ril.gprsclass=12  
+ro.ril.hsdpa.category=10  
+ro.ril.hsupa.category=6  
+ro.ril.hsxpa=3
+ro.ril.set.mtu1472=1
+wifi.interface=wlan0
+wifi.supplicant_scan_interval=160
+#
+# Power Saving/Sleep
+#
+ro.ril.disable.power.collapse=0
+pm.sleep_mode=1
+#
+# Misc
+#
+persist.sys.usb.config=mass_storage,adb
+ro.vold.umsdirtyratio=50
+#
+# Disable-kernel-error-report
+#
+ro.kernel.android.checkjni=0
+ro.kernel.checkjni=0
+#
+# Scrolling-Tweaks
+#
+windowsmgr.max_events_per_sec=150
+ro.max.fling_velocity=12000
+ro.min.fling_velocity=8000
+view.scroll_friction=0
+#
+# GooManger
+#
+ro.goo.developerid=dominos_liberty	
+ro.goo.rom=Coolrom
+#
+#### AUTO-ROTATE LOCKSCREEN ####
+# (uncomment below line to enable)
+#lockscreen.rot_override=true
+#
+#
+
