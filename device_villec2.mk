@@ -47,6 +47,7 @@ PRODUCT_COPY_FILES += \
 
 ## recovery and custom charging
 PRODUCT_COPY_FILES += \
+    device/htc/villec2/recovery/sbin/charging:recovery/root/sbin/charging \
     device/htc/villec2/recovery/sbin/choice_fn:recovery/root/sbin/choice_fn \
     device/htc/villec2/recovery/sbin/power_test:recovery/root/sbin/power_test \
     device/htc/villec2/recovery/sbin/offmode_charging:recovery/root/sbin/offmode_charging \
