@@ -38,7 +38,7 @@ TARGET_KERNEL_CONFIG := villec2_defconfig
 TARGET_KERNEL_SOURCE := kernel/htc/villec2
 TARGET_SPECIFIC_HEADER_PATH := device/htc/villec2/include
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
-BOARD_KERNEL_CMDLINE := console=ttyHSL0 androidboot.hardware=villec2 no_console_suspend=1
+BOARD_KERNEL_CMDLINE := console=ttyHSL0 androidboot.hardware=villec2 no_console_suspend=1 androidboot.selinux=permissive
 
 # Sensors
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
@@ -170,9 +170,6 @@ COMMON_GLOBAL_CFLAGS += -DMR0_CAMERA_BLOB
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_CAMERA_FRONT_VGA := true
-
-# Use CM PowerHAL
-TARGET_POWERHAL_VARIANT := cm
 
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true

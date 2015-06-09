@@ -181,9 +181,6 @@
          config to 7. -->
     <integer name="config_deviceHardwareKeys">19</integer>
 
-    <!-- Boolean indicating whether the wifi chipset has background scan support -->
-    <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
-
     <!-- Specifies the amount of time to disable virtual keys after the screen is touched
          in order to filter out accidental virtual key presses due to swiping gestures
          or taps near the edge of the display.  May be 0 to disable the feature.
