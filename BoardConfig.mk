@@ -199,7 +199,7 @@ USE_SET_METADATA := false
 SKIP_SET_METADATA := true
 
 # CWM
-TARGET_RECOVERY_FSTAB := device/htc/villec2/ramdisk/etc/fstab.villec2
+TARGET_RECOVERY_FSTAB := device/htc/villec2/ramdisk/fstab.villec2
 RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
