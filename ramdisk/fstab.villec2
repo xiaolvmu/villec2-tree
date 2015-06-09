@@ -8,10 +8,12 @@
 /dev/block/platform/msm_sdcc.1/by-num/p20	/boot		emmc	defaults						defaults
 /dev/block/platform/msm_sdcc.1/by-num/p21	/recovery	emmc	defaults						defaults
 /dev/block/platform/msm_sdcc.1/by-num/p22	/misc		emmc	defaults						defaults
-/dev/block/platform/msm_sdcc.1/by-num/p25	/devlog		ext4	noatime,nosuid,nodev,barrier=0				wait
-/dev/block/platform/msm_sdcc.1/by-num/p32	/system		ext4	rw,noatime,barrier=0					wait
-/dev/block/platform/msm_sdcc.1/by-num/p33	/cache		ext4	noatime,nosuid,nodev,barrier=0				wait
+/dev/block/platform/msm_sdcc.1/by-num/p25	/devlog	ext4	noatime,nosuid,nodev,barrier=0				wait
+/dev/block/platform/msm_sdcc.1/by-num/p32	/system	ext4	rw,noatime,barrier=0					wait
+/dev/block/platform/msm_sdcc.1/by-num/p33	/cache	ext4	noatime,nosuid,nodev,barrier=0				wait
+/dev/block/platform/msm_sdcc.1/by-num/p33 /cache  f2fs  rw,nosuid,nodev,noatime,nodiratime,inline_xattr,inline_data,flush_merge  wait
 /dev/block/platform/msm_sdcc.1/by-num/p34	/data		ext4	noatime,nosuid,nodev,noauto_da_alloc,barrier=0		wait,encryptable=footer
+/dev/block/platform/msm_sdcc.1/by-num/p34 /data   f2fs    rw,nosuid,nodev,noatime,nodiratime,inline_xattr,inline_data,flush_merge  wait,encryptable=footer
 
 
 
