@@ -198,16 +198,6 @@ on boot
 
 # Services start here
 
-#insmod bcmdhd driver for BCM4330
-on property:wifi.module.type=0
-    insmod /system/lib/modules/bcmdhd.ko
-
-on property:wifi.module.type=2
-    insmod /system/lib/modules/bcmdhd.ko
-
-on property:wifi.module.type=4
-    insmod /system/lib/modules/bcmdhd.ko
-
 service adc_fixup /system/bin/cat /sys/devices/platform/msm_adc/batt_id
      class main
      oneshot
