@@ -1,8 +1,8 @@
 # Android fstab file.
 #<src>			<mnt_point>	<type>  <mnt_flags>						<fs_mgr_flags>
 # load these in early-init instead
-#/dev/block/mmcblk0p17      /vendor/firmware/misc	vfat  ro,shortname=lower            wait
-#/dev/block/mmcblk0p19      /vendor/firmware/adsp	vfat  ro,shortname=lower            wait
+#/dev/block/mmcblk0p17	/vendor/firmware/misc	vfat	ro,shortname=lower				wait
+#/dev/block/mmcblk0p19	/vendor/firmware/adsp	vfat	ro,shortname=lower				wait
 
 
 /dev/block/platform/msm_sdcc.1/by-num/p20	/boot		emmc	defaults						defaults
@@ -16,7 +16,7 @@
 /dev/block/platform/msm_sdcc.1/by-num/p34	/data		f2fs  	rw,nosuid,nodev,noatime,nodiratime,inline_xattr,inline_data,flush_merge				wait,encryptable=footer
 
 # SD Card
-/devices/platform/msm_sdcc.1/mmc_host/mmc0      auto  auto  defaults            voldmanaged=sdcard0:35,noemulatedsd
+/devices/platform/msm_sdcc.1/mmc_host/mmc0	auto		auto	defaults						voldmanaged=sdcard0:35,noemulatedsd
 
 # USB storage
-/devices/platform/msm_hsusb_host/usb      auto  auto  defaults            voldmanaged=usbdisk:auto
+/devices/platform/msm_hsusb_host/usb		auto		auto	defaults						voldmanaged=usbdisk:auto
