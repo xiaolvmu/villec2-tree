@@ -284,16 +284,6 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dnl80211 -iwlan0 -c /data/mis
     disabled
     oneshot
 
-#insmod bcmdhd driver for BCM4330/BCM4334
-on property:wifi.module.type=0
-    insmod /system/lib/modules/bcmdhd.ko
-
-on property:wifi.module.type=2
-    insmod /system/lib/modules/bcmdhd.ko
-
-on property:wifi.module.type=4
-    insmod /system/lib/modules/bcmdhd.ko
-
 on property:init.svc.bootanim=stopped
     start qcom-post-boot
 
