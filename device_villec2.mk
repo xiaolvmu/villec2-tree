@@ -118,7 +118,7 @@ PRODUCT_COPY_FILES += \
 
 # Scripts
 PRODUCT_COPY_FILES += \
-	device/htc/villec2/scripts/init.d/01bcmdhd:system/etc/init.d/01bcmdhd
+	device/htc/villec2/scripts/init.d/02bcmdhd:system/etc/init.d/02bcmdhd
 
 ## misc
 PRODUCT_PROPERTY_OVERRIDES += \
