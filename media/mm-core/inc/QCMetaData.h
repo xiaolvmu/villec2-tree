@@ -36,6 +36,7 @@ namespace android {
 enum {
     kKeyAacCodecSpecificData = 'nacc' , // for native aac files
 
+#if 0
     kKeyRawCodecSpecificData = 'rcsd',  // raw data - added to support mmParser
     kKeyDivXVersion          = 'DivX',  // int32_t
     kKeyDivXDrm              = 'QDrm',  // void *
@@ -47,11 +48,13 @@ enum {
     kKeyWMAFormatTag         = 'fmtt',  // int64_t
     kKeyWMABitspersample     = 'bsps',  // int64_t
     kKeyWMAVirPktSize        = 'vpks',  // int64_t
+#endif
     kKeyWMAChannelMask       = 'chmk',  // int32_t
 
     kKeyFileFormat           = 'ffmt',  // cstring
 
     kkeyAacFormatAdif        = 'adif',  // bool (int32_t)
+    kKeyInterlace            = 'intL',  // bool (int32_t)
     kkeyAacFormatLtp         = 'ltp',
 
 
@@ -60,11 +63,17 @@ enum {
 
     //Extractor sets this
     kKeyUseArbitraryMode     = 'ArbM',  //bool (int32_t)
-
     kKeySmoothStreaming      = 'ESmS',  //bool (int32_t)
     kKeyHFR                  = 'hfr ',  // int32_t
+
+    kKeyMinBlkSize        = 'mibs', //int32_t
+    kKeyMaxBlkSize        = 'mabs', //int32_t
+    kKeyMinFrmSize        = 'mifs', //int32_t
+    kKeyMaxFrmSize        = 'mafs', //int32_t
+    kKeyMd5Sum            = 'md5s', //cstring
 };
 
+#if 0
 enum {
     kTypeDivXVer_3_11,
     kTypeDivXVer_4,
@@ -76,7 +85,13 @@ enum {
     kTypeWMAPro,
     kTypeWMALossLess,
 };
+#endif
 
+//This enum should be keep in sync with "enum Flags" in MediaExtractor.h in AOSP,
+//Value should reflect as last entry in the enum
+enum {
+    CAN_SEEK_TO_ZERO   = 16, // the "previous button"
+};
 }  // namespace android
 
 #endif  // QC_META_DATA_H_

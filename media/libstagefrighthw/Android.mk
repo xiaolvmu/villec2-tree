@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-ifneq ($(TARGET_BOARD_PLATFORM),msm8660)
+
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
@@ -36,4 +36,4 @@ LOCAL_SHARED_LIBRARIES :=       \
 LOCAL_MODULE := libstagefrighthw
 
 include $(BUILD_SHARED_LIBRARY)
-endif
+
