@@ -73,8 +73,8 @@ BOARD_SEPOLICY_UNION += \
     file.te \
     hci_init.te \
     healthd.te \
-    init.te \
     init_shell.te \
+    init.te \
     keystore.te \
     kickstart.te \
     mediaserver.te \
@@ -82,15 +82,12 @@ BOARD_SEPOLICY_UNION += \
     surfaceflinger.te \
     system.te \
     ueventd.te \
-    untrusted_app.te \
-    vold.te \
-    wpa.te \
-    wpa_socket.te
+    wpa_socket.te \
+    wpa.te
 
 # we are using prebuilt in vendor tree
 TARGET_QCOM_DISPLAY_VARIANT := false
 TARGET_QCOM_MEDIA_VARIANT := villec2
-
 
 # FB legacy
 BOARD_EGL_NEEDS_LEGACY_FB := true
