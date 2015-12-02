@@ -18,8 +18,14 @@
 #include <media/hardware/MetadataBufferType.h>
 
 namespace android {
+
+    /*typedef enum {
+        kMetadataBufferTypeCameraSource  = 0,
+        kMetadataBufferTypeGrallocSource = 1,
+    } MetadataBufferType;*/
+
     typedef struct encoder_media_buffer_type {
-        MetadataBufferType buffer_type;
+         MetadataBufferType buffer_type;
         buffer_handle_t meta_handle;
     } encoder_media_buffer_type;
 }

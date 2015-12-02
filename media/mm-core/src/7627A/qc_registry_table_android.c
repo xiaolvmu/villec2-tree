@@ -1,5 +1,5 @@
 /*--------------------------------------------------------------------------
-Copyright (c) 2011-2012, The Linux Foundation. All rights reserved.
+Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -478,38 +478,6 @@ omx_core_cb_type core[] =
       "audio_encoder.qcelp13"
     }
   },
-  {
-    "OMX.qcom.audio.decoder.ac3",
-    NULL,   // Create instance function
-    // Unique instance handle
-    {
-      NULL,
-      NULL,
-      NULL,
-      NULL
-    },
-    NULL,   // Shared object library handle
-    "libOmxAc3HwDec.so",
-    {
-      "audio_decoder.ac3"
-    }
-  },
-  {
-    "OMX.qcom.audio.decoder.eac3",
-    NULL,   // Create instance function
-    // Unique instance handle
-    {
-      NULL,
-      NULL,
-      NULL,
-      NULL
-    },
-    NULL,   // Shared object library handle
-    "libOmxAc3HwDec.so",
-    {
-      "audio_decoder.eac3"
-    }
-  },
 #ifndef _ANDROID_
   {
     "OMX.qcom.audio.decoder.amrnb",
@@ -589,22 +557,6 @@ omx_core_cb_type core[] =
     "libOmxAmrDec.so",
     {
       "audio_decoder.amrnb"
-    }
-  },
-  {
-    "OMX.qcom.audio.encoder.tunneled.aac",
-    NULL, // Create instance function
-    // Unique instance handle
-    {
-      NULL,
-      NULL,
-      NULL,
-      NULL
-    },
-    NULL,   // Shared object library handle
-    "libOmxAacEnc.so",
-    {
-      "audio_encoder.aac"
     }
   },
   {

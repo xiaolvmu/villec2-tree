@@ -264,7 +264,7 @@ omx_core_cb_type core[] =
       "audio_decoder.aac"
     }
   },
-
+  
 };
 
 const unsigned int SIZE_OF_CORE = sizeof(core) / sizeof(omx_core_cb_type);

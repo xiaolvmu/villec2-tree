@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 - 2013, The Linux Foundation. All rights reserved.
+/* copyright (c) 2012, The Linux Foundation. all rights reserved.
  *
  * redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -26,6 +26,9 @@
  * if advised of the possibility of such damage.
  *
  */
+/*--------------------------------------------------------------------------
+Copyright (c) 2012 The Linux Foundation. All rights reserved.
+--------------------------------------------------------------------------*/
 
 #ifndef C2D_ColorConverter_H_
 #define C2D_ColorConverter_H_
@@ -68,7 +71,6 @@ typedef C2D_STATUS (*LINK_c2dUnMapAddr)(void * gpuaddr);
 
 namespace android {
 
-/*TODO: THIS NEEDS TO ENABLED FOR JB PLUS*/
 enum ColorConvertFormat {
     RGB565 = 1,
     YCbCr420Tile,
@@ -77,7 +79,6 @@ enum ColorConvertFormat {
     YCrCb420P,
     RGBA8888,
     NV12_2K,
-    NV12_128m,
 };
 
 typedef struct {
@@ -99,12 +100,12 @@ class C2DColorConverterBase {
 
 public:
     virtual ~C2DColorConverterBase(){};
-    virtual int convertC2D(int srcFd, void *srcBase, void * srcData, int dstFd, void *dstBase, void * dstData) = 0;
+    virtual int convertC2D(int srcFd, void * srcData, int dstFd, void * dstData) = 0;
     virtual int32_t getBuffReq(int32_t port, C2DBuffReq *req) = 0;
     virtual int32_t dumpOutput(char * filename, char mode) = 0;
 };
 
-typedef C2DColorConverterBase* createC2DColorConverter_t(size_t srcWidth, size_t srcHeight, size_t dstWidth, size_t dstHeight, ColorConvertFormat srcFormat, ColorConvertFormat dstFormat, int32_t flags, size_t srcStride);
+typedef C2DColorConverterBase* createC2DColorConverter_t(size_t srcWidth, size_t srcHeight, size_t dstWidth, size_t dstHeight, ColorConvertFormat srcFormat, ColorConvertFormat dstFormat, int32_t flags, size_t stride);
 typedef void destroyC2DColorConverter_t(C2DColorConverterBase*);
 
 }

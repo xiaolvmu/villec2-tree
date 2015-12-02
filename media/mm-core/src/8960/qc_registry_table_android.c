@@ -1,5 +1,5 @@
 /*--------------------------------------------------------------------------
-Copyright (c) 2011, The Linux Foundation. All rights reserved.
+Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -265,6 +265,22 @@ omx_core_cb_type core[] =
     }
   },
   {
+    "OMX.qcom.video.encoder.avc.secure",
+    NULL, // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    "libOmxVenc.so",
+    {
+      "video_encoder.avc"
+    }
+  },
+  {
     "OMX.qcom.audio.decoder.Qcelp13",
     NULL, // Create instance function
     // Unique instance handle
@@ -314,6 +330,22 @@ omx_core_cb_type core[] =
   },
   {
     "OMX.qcom.audio.decoder.wma10Pro",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+     NULL,
+     NULL,
+     NULL,
+     NULL
+    },
+    NULL,   // Shared object library handle
+    "libOmxWmaDec.so",
+    {
+     "audio_decoder.wma"
+    }
+  },
+  {
+    "OMX.qcom.audio.decoder.wmaLossLess",
     NULL,   // Create instance function
     // Unique instance handle
     {
@@ -424,23 +456,7 @@ omx_core_cb_type core[] =
       "audio_encoder.amrnb"
     }
   },
- {
-    "OMX.qcom.audio.decoder.aac",
-    NULL,   // Create instance function
-    // Unique instance handle
-    {
-      NULL,
-      NULL,
-      NULL,
-      NULL
-    },
-    NULL,   // Shared object library handle
-    "libOmxAacDec.so",
-    {
-      "audio_decoder.aac"
-    }
-  },
- {
+  {
     "OMX.qcom.audio.decoder.multiaac",
     NULL,   // Create instance function
     // Unique instance handle
@@ -457,7 +473,7 @@ omx_core_cb_type core[] =
     }
   },
   {
-    "AIV.play",
+    "drm.play",
     NULL, // Create instance function
     // Unique instance handle
     {
@@ -467,9 +483,9 @@ omx_core_cb_type core[] =
       NULL
     },
     NULL,  // Shared object library handle
-    "libAivPlay.so",
+    "libDrmPlay.so",
     {
-      "AIV.play.101"
+      "drm.play"
     }
   },
   {

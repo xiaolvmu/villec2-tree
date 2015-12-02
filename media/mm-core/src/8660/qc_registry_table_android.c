@@ -314,7 +314,7 @@ omx_core_cb_type core[] =
     {
      "audio_decoder.wma"
     }
-  },
+  },  
   {
     "OMX.qcom.audio.decoder.wmaLossLess",
     NULL,   // Create instance function
