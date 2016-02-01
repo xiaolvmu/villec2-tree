@@ -38,7 +38,7 @@ TARGET_KERNEL_CONFIG := villec2_defconfig
 TARGET_KERNEL_SOURCE := kernel/htc/villec2
 TARGET_SPECIFIC_HEADER_PATH := device/htc/villec2/include
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
-BOARD_KERNEL_CMDLINE := console=ttyHSL0 androidboot.hardware=villec2 no_console_suspend=1 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyHSL0 androidboot.hardware=villec2 no_console_suspend=1
 
 # Sensors
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
@@ -58,32 +58,6 @@ TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 # Flags
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
-
-# SELinux
-BOARD_SEPOLICY_DIRS += \
-    device/htc/villec2/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    app.te \
-    bluetooth.te \
-    device.te \
-    domain.te \
-    drmserver.te \
-    file_contexts \
-    file.te \
-    hci_init.te \
-    healthd.te \
-    init_shell.te \
-    init.te \
-    keystore.te \
-    kickstart.te \
-    mediaserver.te \
-    rild.te \
-    surfaceflinger.te \
-    system.te \
-    ueventd.te \
-    wpa_socket.te \
-    wpa.te
 
 # we are using prebuilt in vendor tree
 TARGET_QCOM_DISPLAY_VARIANT := caf
