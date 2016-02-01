@@ -86,8 +86,8 @@ BOARD_SEPOLICY_UNION += \
     wpa.te
 
 # we are using prebuilt in vendor tree
-TARGET_QCOM_DISPLAY_VARIANT := false
-TARGET_QCOM_MEDIA_VARIANT := villec2
+TARGET_QCOM_DISPLAY_VARIANT := caf
+TARGET_QCOM_MEDIA_VARIANT := caf
 
 # FB legacy
 BOARD_EGL_NEEDS_LEGACY_FB := true
