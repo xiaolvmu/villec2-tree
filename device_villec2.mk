@@ -49,9 +49,18 @@ PRODUCT_COPY_FILES += \
     device/htc/villec2/recovery/sbin/offmode_charging:recovery/root/sbin/offmode_charging \
     device/htc/villec2/recovery/sbin/detect_key:recovery/root/sbin/detect_key \
     device/htc/villec2/recovery/sbin/htcbatt:recovery/root/sbin/htcbatt
-    
-      
-      
+
+# Audio
+PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    audio.r_submix.default \
+    audio.usb.default \
+    audio.primary.msm8660 \
+    audio_policy.conf \
+    libaudioutils \
+    libdashplayer \
+    libaudio-resampler
+
 # QC thermald config
 PRODUCT_COPY_FILES += device/htc/villec2/configs/thermald.conf:system/etc/thermald.conf
 

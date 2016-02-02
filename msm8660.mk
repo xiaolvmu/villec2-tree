@@ -98,7 +98,6 @@ PRODUCT_PACKAGES += \
 
 # Media configuration
 PRODUCT_COPY_FILES += \
-    device/htc/villec2/configs/audio_policy.conf:system/etc/audio_policy.conf \
     device/htc/villec2/configs/media_codecs.xml:system/etc/media_codecs.xml \
     device/htc/villec2/configs/media_profiles.xml:system/etc/media_profiles.xml
 
