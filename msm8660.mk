@@ -37,16 +37,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
-# Audio
-PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-    audio_policy.msm8660 \
-    audio_policy.conf \
-    audio.primary.msm8660 \
-    audio.usb.default \
-    libaudio-resampler \
-    libaudioutils
-
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8660
