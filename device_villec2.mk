@@ -116,6 +116,10 @@ PRODUCT_COPY_FILES += \
     device/htc/villec2/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
     device/htc/villec2/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw
 
+# Scripts
+PRODUCT_COPY_FILES += \
+	device/htc/villec2/scripts/init.d/02bcmdhd:system/etc/init.d/02bcmdhd
+
 ## misc
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enable_bypass=1 \

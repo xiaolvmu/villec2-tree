@@ -1,0 +1,5 @@
+#!/system/bin/sh
+# Finally @liblik fixed bcmdhd4330 module init
+
+sleep 1
+insmod /system/lib/modules/bcmdhd.ko
