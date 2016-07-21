@@ -89,11 +89,6 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUEDROID_VENDOR_CONF := device/htc/villec2/bluetooth/vnd_msm8660.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/villec2/bluetooth/include
 
-# Graphics
-USE_OPENGL_RENDERER := true
-TARGET_USES_C2D_COMPOSITION := true
-TARGET_USES_ION := true
-BOARD_EGL_CFG := device/htc/villec2/configs/egl.cfg
 # Filesystem
 BOARD_VOLD_MAX_PARTITIONS := 36
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
@@ -163,11 +158,13 @@ BOARD_USES_LEGACY_RIL := true
 
 # Graphics
 COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK -DREFRESH_RATE=60 -DHTC_RGBA_8888_OFFSET
-USE_OPENGL_RENDERER := true
 TARGET_NO_HW_VSYNC := true
-TARGET_USES_C2D_COMPOSITION := true
 USE_SET_METADATA := false
 SKIP_SET_METADATA := true
+USE_OPENGL_RENDERER := true
+TARGET_USES_C2D_COMPOSITION := true
+TARGET_USES_ION := true
+BOARD_EGL_CFG := device/htc/villec2/configs/egl.cfg
 
 # CWM
 TARGET_RECOVERY_FSTAB := device/htc/villec2/ramdisk/fstab.villec2
