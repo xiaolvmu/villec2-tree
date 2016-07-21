@@ -36,6 +36,7 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01400000
 BOARD_KERNEL_PAGE_SIZE := 2048
 TARGET_KERNEL_CONFIG := villec2_defconfig
 TARGET_KERNEL_SOURCE := kernel/htc/villec2
+KERNEL_TOOLCHAIN_PREFIX:=$(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-cortex_a8-linux-gnueabi/bin/arm-cortex_a8-linux-gnueabi-
 TARGET_SPECIFIC_HEADER_PATH := device/htc/villec2/include
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 BOARD_KERNEL_CMDLINE := console=ttyHSL0 androidboot.hardware=villec2 no_console_suspend=1 androidboot.selinux=permissive
