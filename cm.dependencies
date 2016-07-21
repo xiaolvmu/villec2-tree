@@ -1,6 +1,10 @@
 [
   {
-    "repository": "android_kernel_htc_villec2",
+    "repository": "villec2-kernel",
     "target_path": "kernel/htc/villec2"
+  },
+  {
+    "repository": "villec2-tree",
+    "target_path": "device/htc/villec2"
   }
 ]

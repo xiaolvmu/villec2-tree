@@ -1,4 +1,4 @@
-VENDOR=htc
+VENDOR=htc-extra
 DEVICE=villec2
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
